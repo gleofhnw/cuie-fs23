@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Standard HTML Controls</title>
+    <style>
+        button {
+            color: red;
+            background-color: green;
+            border-radius: .3em;
+        }
+        button:focus {
+            outline-offset: .3em;
+        }
+        button:hover {
+            color: white ;
+        }
+    </style>
 </head>
 <body>
 <main>
     <div>
         <label for="t1">Text Field</label>
-        <input id="t1" type="text">
+        <input id="t1" type="text" placeholder="default">
     </div>
     <div>
         <label for="t2">Checkbox</label>
         <input id="t2" type="checkbox">
     </div>
+    <div>
+        <button autofocus>My Button</button>
+        <button disabled>disabled</button>
+    </div>
+    image map, textarea, select, button
+    datalist,
+    canvas, svg, img
+    <h2>Stati</h2>
+    focus, hover, active, visited,
+    checked, selected, valid/invalid,
+    required, empty, placeholderShown,
+    read-only, disabled, ...
 </main>
 
 </body>
