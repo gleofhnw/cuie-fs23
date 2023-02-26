@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LED Base</title>
+</head>
+<style>
+    *, *::after, *::before {  /* reset */
+        box-sizing:     border-box;
+        margin:         0;
+        padding:        0;
+    }
+    body {
+        margin:         2em;
+        display:        grid;
+        grid-template-columns: max-content max-content max-content;
+        background:     lightgray;
+    }
+    .stop {
+        color:          orangered;
+    }
+    .ready {
+        color:          yellow;
+    }
+    .go {
+        color:          lime;
+    }
+
+    .LED {
+        --led-size:     10em;
+        position:       relative;
+        margin:         2em;
+        width:          /* TODO: fill here */ ;
+        aspect-ratio:   1/1;
+    }
+    .LED > * {
+        position:       absolute;
+        inset:          0;
+        border-radius:  50%;
+    }
+    .gradientBackground {
+        background:     /* TODO: fill here */;
+    }
+    .inlay {
+        background:     /* TODO: fill here */;
+    }
+    .ledOff {
+        inset:          calc(var(--led-size) / 6);
+        background:     currentColor;
+        mix-blend-mode: /* TODO: fill here */;
+    }
+    .ledOn {
+        inset:          /* TODO: fill here */;
+        background:     /* TODO: fill here */;
+        box-shadow:     /* TODO: fill here */;
+        opacity:        0.9;
+    }
+    .highlight {
+        left:           calc(var(--led-size)     /  4);
+        right:          calc(var(--led-size)     /  4);
+        top:            calc(var(--led-size)     / 12);
+        bottom:         calc(var(--led-size) * 2 /  3);
+        background:     /* TODO: fill here */;
+        box-shadow:     0 0 calc(var(--led-size) / 12) 0 white;
+        opacity:        0.6;
+    }
+</style>
+<body>
+
+<div class="stop">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+<div class="ready">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+<div class="go">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+
+<div>
+    <div class="LED" id="changeme">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <label > Change me:
+        <input type="color" onchange="document.getElementById('changeme').style.color = this.value">
+    </label>
+</div>
+
+<script>
+    const leds = document.querySelectorAll(".LED");
+    leds.forEach( led => {
+        led.addEventListener("click", evt => {
+            const colorDiv = led.children[2];
+            if (colorDiv.classList.contains("ledOn")){
+                colorDiv.classList.remove("ledOn");
+                colorDiv.classList.add("ledOff");
+            } else {
+                colorDiv.classList.remove("ledOff");
+                colorDiv.classList.add("ledOn");
+            }
+        })
+    });
+
+</script>
+
+</body>
+</html>

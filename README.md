@@ -8,3 +8,9 @@
 - change the appearance of the elements on as many states as you can think of:
   - hover, focus, valid/invalid, empty, active, visited, ect.
   - make yourself a "test bed" such that you can visually check for conflicts.
+
+## Week 02
+
+- think of a design for an LED (be inspired by the images)
+- change the LED-Base.html as a basis for your implementation
+- adapt the "TODO: fill here" sections to reflect your design
