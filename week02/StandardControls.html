@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Standard HTML Controls</title>
+    <style>
+        body {
+            margin-inline: 2em;
+        }
+        main div {
+            margin: 2em;
+        }
+        .inputs, fieldset {
+            display:            grid;
+            grid-template-columns: max-content max-content;
+            justify-items:      left;
+            gap:                .2em 2em;
+        }
+
+        input:placeholder-shown {
+            background-color: greenyellow;
+        }
+        input:focus {
+            outline-color: red;
+        }
+        input:hover {
+            box-shadow: .2em .2em .1em .1em lightcyan;
+        }
+        input:invalid {
+            background-color: yellow;
+        }
+
+    </style>
+    <script>
+        const toggleLED = img => img.setAttribute("src", img.src.match("on") ? "led_red_off.png" : "led_red_on.png");
+    </script>
+</head>
+<body>
+<main>
+    <datalist id="choices">
+        <option>first</option>
+        <option>second</option>
+        <option>third</option>
+    </datalist>
+    <div class = "inputs">
+        <label for="t1">text</label>    <input id="t1" type="text">
+        <label for="t1l">datalist</label><input id="t1l" type="text" list="choices">
+        <label for="t13">password</label><input id="t13" type="password">
+        <label for="t17">search</label> <input id="t17" type="search">
+        <label for="t7" >email</label>  <input id="t7"   type="email">
+        <label for="t21">url</label>    <input id="t21" type="url">
+        <label for="t19">tel</label>    <input id="t19" type="tel">
+        <label for="t12">number</label> <input id="t12" type="number">
+        <label for="t2">checkbox</label><input id="t2" type="checkbox">
+        <label for="t14">radio</label>  <input id="t14" type="radio">
+        <label for="t15">range</label>  <input id="t15" type="range">
+        <label for="t3" >color</label>  <input id="t3"   type="color">
+        <label for="t5" >date</label>   <input id="t5"   type="date">
+        <label for="t6" >datetime-local</label><input id="t6"   type="datetime-local">
+        <label for="t20">time</label>   <input id="t20" type="time">
+        <label for="t22">week</label>   <input id="t22" type="week">
+        <label for="t11">month</label>  <input id="t11" type="month">
+        <label for="t8" >file</label>   <input id="t8"   type="file">
+        <label for="t10">image</label>  <input id="t10" type="image" src="led_red_off.png" alt="led red" width="30" onclick="toggleLED(this)">
+        <label for="t4" >button</label> <input id="t4"   type="button" value="button">
+        <label for="t16">reset</label>  <input id="t16" type="reset">
+        <label for="t18">submit</label> <input id="t18" type="submit">
+        <label for="t9" >hidden</label> <input id="t9"   type="hidden">
+    </div>
+    <div>
+        <button>Button Element</button>
+    </div>
+    <div>
+        <img src="led_red_off.png" id="imgmap" alt="led red" usemap="#workmap" width="50" height="50">
+        Imagemap (consider input type image instead)
+        <map name="workmap">
+          <area alt="center area" shape="circle" coords="25,25,20" onclick="toggleLED(document.getElementById('imgmap'))">
+        </map>
+    </div>
+    <div>
+        <label>
+            Textarea
+            <textarea>Text in a textarea</textarea>
+        </label>
+    </div>
+    <div>
+        <label>
+            select from options
+            <select>
+                <option value="1">one</option>
+                <option value="2">two</option>
+                <option value="3">three</option>
+            </select>
+        </label>
+    </div>
+
+    <h2>Test Bed</h2>
+    <form>
+        <fieldset>
+            <legend> Component under Test </legend>
+
+            <label for="tt1">placeholder</label>    <input id="tt1" type="text" placeholder="placeholder">
+            <label for="tt2">focus</label>          <input id="tt2" type="text" autofocus>
+            <label for="tt3">required</label>       <input id="tt3" type="text" required>
+            <label for="tt6">tooltip</label>        <input id="tt6" type="text" title="I'm a tooltip">
+            <label for="tt4">read-only</label>      <input id="tt4" type="text" readonly>
+            <label for="tt5">disabled</label>       <input id="tt5" type="text" disabled>
+
+        </fieldset>
+    </form>
+    focus, hover, active, visited,
+    checked, selected, valid/invalid,
+    required, empty, placeholderShown,
+    read-only, disabled, ...
+
+</main>
+
+</body>
+</html>
