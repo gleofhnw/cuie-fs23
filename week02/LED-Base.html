@@ -30,7 +30,7 @@
         --led-size:     10em;
         position:       relative;
         margin:         2em;
-        width:          /* TODO: fill here */ ;
+        width:          10em/* TODO: fill here */ ;
         aspect-ratio:   1/1;
     }
     .LED > * {
@@ -39,20 +39,20 @@
         border-radius:  50%;
     }
     .gradientBackground {
-        background:     /* TODO: fill here */;
+        background:     linear-gradient(to bottom, #555 40%, #BBB)/* TODO: fill here */;
     }
     .inlay {
-        background:     /* TODO: fill here */;
+        background:     linear-gradient(to top, #BBB, #555)/* TODO: fill here */;
     }
     .ledOff {
         inset:          calc(var(--led-size) / 6);
         background:     currentColor;
-        mix-blend-mode: /* TODO: fill here */;
+        mix-blend-mode: multiply/* TODO: fill here */;
     }
     .ledOn {
-        inset:          /* TODO: fill here */;
-        background:     /* TODO: fill here */;
-        box-shadow:     /* TODO: fill here */;
+        inset:          calc(var(--led-size) / 6)/* TODO: fill here */;
+        background:     currentColor/* TODO: fill here */;
+        box-shadow:     0px 0px 10px 5px currentColor;/* TODO: fill here */;
         opacity:        0.9;
     }
     .highlight {
@@ -60,7 +60,7 @@
         right:          calc(var(--led-size)     /  4);
         top:            calc(var(--led-size)     / 12);
         bottom:         calc(var(--led-size) * 2 /  3);
-        background:     /* TODO: fill here */;
+        background:     white/* TODO: fill here */;
         box-shadow:     0 0 calc(var(--led-size) / 12) 0 white;
         opacity:        0.6;
     }
