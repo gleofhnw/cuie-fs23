@@ -14,3 +14,12 @@
 - think of a design for an LED (be inspired by the images)
 - change the LED-Base.html as a basis for your implementation
 - adapt the "TODO: fill here" sections to reflect your design
+
+## Week 03
+
+- UI Engineering in figma with Fabian Affolter (Gastvortrag)
+
+## Week 04
+
+- Google UX (Gastvortrag)
+- Visualization with plain CSS
