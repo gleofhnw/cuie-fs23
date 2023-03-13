@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>LED Base</title>
+    <title>LED Experiment</title>
 </head>
 <style>
-    :root {
-        --color-gradient-bg-end: #838383;
-    }
     *, *::after, *::before {  /* reset */
         box-sizing:     border-box;
         margin:         0;
@@ -33,7 +30,7 @@
         --led-size:     10em;
         position:       relative;
         margin:         2em;
-        width:          /* TODO: fill here */ ;
+        width:          var(--led-size);
         aspect-ratio:   1/1;
     }
     .LED > * {
@@ -42,21 +39,23 @@
         border-radius:  50%;
     }
     .gradientBackground {
-        background:     linear-gradient(black, var(--color-gradient-bg-end));
+        background:     linear-gradient(black 0%, white 100%);
     }
-
     .inlay {
-        background:     /* TODO: fill here */;
+        background:     radial-gradient(50% 50% at 50% 50%,
+                             transparent 66%,
+                             white       66%,
+                             transparent 100%);
     }
     .ledOff {
         inset:          calc(var(--led-size) / 6);
         background:     currentColor;
-        mix-blend-mode: /* TODO: fill here */;
+        mix-blend-mode: darken;
     }
     .ledOn {
-        inset:          /* TODO: fill here */;
-        background:     /* TODO: fill here */;
-        box-shadow:     /* TODO: fill here */;
+        inset:          calc(var(--led-size) / 6);
+        background:     currentColor;
+        box-shadow:     0 0 calc(var(--led-size) / 4) 0 currentColor;
         opacity:        0.9;
     }
     .highlight {
@@ -64,7 +63,7 @@
         right:          calc(var(--led-size)     /  4);
         top:            calc(var(--led-size)     / 12);
         bottom:         calc(var(--led-size) * 2 /  3);
-        background:     /* TODO: fill here */;
+        background:     radial-gradient(40% 40% at 50% 40%, aliceblue, white );
         box-shadow:     0 0 calc(var(--led-size) / 12) 0 white;
         opacity:        0.6;
     }

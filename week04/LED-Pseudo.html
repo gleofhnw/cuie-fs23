@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LED Experiment</title>
+</head>
+<style>
+    *, *::after, *::before {  /* reset */
+        box-sizing:     border-box;
+        margin:         0;
+        padding:        0;
+    }
+    body {
+        margin:         2em;
+        display:        grid;
+        grid-template-columns: max-content max-content max-content;
+        background:     lightgray;
+    }
+    .stop {
+        color:          orangered;
+    }
+    .ready {
+        color:          yellow;
+    }
+    .go {
+        color:          lime;
+    }
+
+    .LED {
+        --led-size:     10em;
+        position:       relative;
+        margin:         2em;
+        width:          var(--led-size);
+        aspect-ratio:   1/1;
+        border-radius:  50%;
+        background:     radial-gradient(50% 50% at 50% 50%,     /* inlay on top */
+                             transparent 66%,
+                             white       66%,
+                             transparent 100%),
+                        linear-gradient(black 0%, white 100%);  /* gradient background */
+    }
+    .LED::before {
+        content:        '';
+        position:       absolute;
+        inset:          0;
+        border-radius:  50%;
+        background:     radial-gradient(50% 50% at 50% 50%, currentColor 66%, transparent 68%);
+    }
+    .LED::after {
+        content:       '';
+        position:      absolute;
+        border-radius: 50%;
+        left:          calc(var(--led-size)     /  4);
+        right:         calc(var(--led-size)     /  4);
+        top:           calc(var(--led-size)     / 12);
+        bottom:        calc(var(--led-size) * 2 /  3);
+        background:    aliceblue;
+        box-shadow:    0 0 calc(var(--led-size) / 12) 0 white;
+        opacity:       0.6;
+    }
+
+    .ledOff.LED::before {
+        mix-blend-mode: darken;
+    }
+    .ledOn.LED::before {
+        background:     radial-gradient(50% 50% at 50% 50%, currentColor 67%, transparent 85%);
+        filter:         blur(calc(var(--led-size) / 8)) brightness(120%) saturate(200%);
+    }
+
+</style>
+<body>
+
+
+<div class="stop">
+    <div class="LED ledOff"></div>
+    <div class="LED ledOn"></div>
+</div>
+<div class="ready">
+    <div class="LED ledOff"></div>
+    <div class="LED ledOn"></div>
+</div>
+<div class="go">
+    <div class="LED ledOff"></div>
+    <div class="LED ledOn"></div>
+</div>
+
+
+
+<div>
+    <div class="LED" id="changeme">
+    </div>
+    <label > Change me:
+        <input type="color" onchange="document.getElementById('changeme').style.color = this.value;">
+    </label>
+</div>
+
+<script>
+    const leds = document.querySelectorAll(".LED");
+    leds.forEach( led => {
+        console.log("adding listener to ", led);
+        led.onclick = evt => {
+            console.log("clicked", led);
+            if (led.classList.contains("ledOn")){
+                console.log('go off');
+                led.classList.remove("ledOn");
+                led.classList.add("ledOff");
+            } else {
+                console.log('go on');
+                led.classList.remove("ledOff");
+                led.classList.add("ledOn");
+            }
+        };
+    });
+
+</script>
+
+</body>
+</html>
