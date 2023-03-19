@@ -23,3 +23,12 @@
 
 - Google UX (Gastvortrag)
 - Visualization with plain CSS
+
+## Week 05
+
+- Canvas
+- Beispiele, Eigenschaften
+- Übung
+
+
+
