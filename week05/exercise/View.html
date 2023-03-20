@@ -27,20 +27,52 @@
         const centery   = canvas.height / 2;
         const ctx       = canvas.getContext('2d');
 
+        //Creating colours from https://css-tricks.com/snippets/javascript/random-hex-color/
+        const colours = [];
+        for (let i = 0; i < 10; i++) {
+            colours.push('#' + Math.floor(Math.random() * 16777215).toString(16));
+        }
+
+        //Creating each square
+        const drawSquare = (x, y, wh, colour) => {
+            ctx.beginPath();
+            ctx.moveTo(centerx, centery);
+            ctx.rect(x, y, wh, wh);
+            ctx.fillStyle = colour;
+            ctx.fill();
+        }
+
+        //Filling background
+        for(let i = 0; i < 10000; i++){
+
+            const x = Math.floor(Math.random() * 801);
+            const y = Math.floor(Math.random() * 801);
+            const j = Math.floor(Math.random() * 10);
+
+            drawSquare(x, y, 20, colours[j]);
+        }
+
+
+        //Left eye
         ctx.beginPath();
         ctx.moveTo(centerx, centery);
-        ctx.arc(centerx, centery, 300, 0, 5.4);
-        ctx.fillStyle = "blue";
+        ctx.arc(centerx-100, centery-100, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = 'black';
         ctx.fill();
 
+        //Right eye
         ctx.beginPath();
         ctx.moveTo(centerx, centery);
-        ctx.arc(centerx, centery, 350, 0, 3.1);
-        ctx.strokeStyle = "red";
-        ctx.lineCap = "square";
-        ctx.lineWidth = 5;
-        ctx.stroke();
+        ctx.arc(centerx+100, centery-100, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = 'black';
+        ctx.fill();
 
+        //Smile
+        ctx.beginPath();
+        ctx.arc(centerx, centery-100, 250, Math.PI - 0.5, 2 * Math.PI + 0.5, true);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 50;
+        ctx.stroke();
     };
     paint(document.getElementById("canvas"));
 </script>
