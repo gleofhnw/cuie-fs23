@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LED Experiment</title>
+</head>
+<style>
+    *, *::after, *::before {  /* reset */
+        box-sizing:     border-box;
+        margin:         0;
+        padding:        0;
+    }
+    body {
+        margin:         2em;
+        display:        grid;
+        grid-template-columns: max-content max-content max-content;
+        background:     lightgray;
+    }
+    .stop {
+        color:          orangered;
+    }
+    .ready {
+        color:          yellow;
+    }
+    .go {
+        color:          lime;
+    }
+
+    .LED {
+        --led-size:     10em;
+        position:       relative;
+        margin:         2em;
+        width:          var(--led-size);
+        aspect-ratio:   1/1;
+    }
+    .LED > * {
+        position:       absolute;
+        inset:          0;
+        border-radius:  50%;
+    }
+    .gradientBackground {
+        background:     linear-gradient(black 0%, white 100%);
+    }
+    .inlay {
+        background:     radial-gradient(50% 50% at 50% 50%,
+                             transparent 66%,
+                             white       66%,
+                             transparent 100%);
+    }
+    .ledOff {
+        inset:          calc(var(--led-size) / 6);
+        background:     currentColor;
+        mix-blend-mode: darken;
+    }
+    .ledOn {
+        inset:          calc(var(--led-size) / 6);
+        background:     currentColor;
+        box-shadow:     0 0 calc(var(--led-size) / 4) 0 currentColor;
+        opacity:        0.9;
+    }
+    .highlight {
+        left:           calc(var(--led-size)     /  4);
+        right:          calc(var(--led-size)     /  4);
+        top:            calc(var(--led-size)     / 12);
+        bottom:         calc(var(--led-size) * 2 /  3);
+        background:     radial-gradient(40% 40% at 50% 40%, aliceblue, white );
+        box-shadow:     0 0 calc(var(--led-size) / 12) 0 white;
+        opacity:        0.6;
+    }
+</style>
+<body>
+
+<div class="stop">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+<div class="ready">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+<div class="go">
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <div class="LED">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOn"></div>
+        <div class="highlight"></div>
+    </div>
+</div>
+
+<div>
+    <div class="LED" id="changeme">
+        <div class="gradientBackground"></div>
+        <div class="inlay"></div>
+        <div class="ledOff"></div>
+        <div class="highlight"></div>
+    </div>
+    <label > Change me:
+        <input type="color" onchange="document.getElementById('changeme').style.color = this.value">
+    </label>
+</div>
+
+<script>
+    const leds = document.querySelectorAll(".LED");
+    leds.forEach( led => {
+        led.addEventListener("click", evt => {
+            const colorDiv = led.children[2];
+            if (colorDiv.classList.contains("ledOn")){
+                colorDiv.classList.remove("ledOn");
+                colorDiv.classList.add("ledOff");
+            } else {
+                colorDiv.classList.remove("ledOff");
+                colorDiv.classList.add("ledOn");
+            }
+        })
+    });
+
+</script>
+
+</body>
+</html>
