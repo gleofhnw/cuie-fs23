@@ -5,6 +5,10 @@
     <title>LED Base</title>
 </head>
 <style>
+    :root {
+        --color-gradient-bg-end: #838383;
+    }
+
     *, *::after, *::before {  /* reset */
         box-sizing:     border-box;
         margin:         0;
@@ -39,20 +43,30 @@
         border-radius:  50%;
     }
     .gradientBackground {
-        background:     linear-gradient(to bottom, #555 40%, #BBB)/* TODO: fill here */;
+        background:     linear-gradient(to bottom, #555 30%, #CCC)/* TODO: fill here */;
+        /* GradientBackground */
+
+        /* linearBlackToWhite */
+        /* mix-blend-mode: normal;*/
+
     }
     .inlay {
-        background:     linear-gradient(to top, #BBB, #555)/* TODO: fill here */;
+        /* background:     linear-gradient(to top, #BBB, #555) TODO: fill here*/;
+        /* Inlay */
+        /* radialHalfTransparentRing */
+        background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 67.7%, rgba(255, 255, 255, 0) 67.71%, rgba(0, 0, 0, 0.3) 100%);
+
     }
     .ledOff {
         inset:          calc(var(--led-size) / 6);
         background:     currentColor;
         mix-blend-mode: multiply/* TODO: fill here */;
+
     }
     .ledOn {
         inset:          calc(var(--led-size) / 6)/* TODO: fill here */;
         background:     currentColor/* TODO: fill here */;
-        box-shadow:     0px 0px 10px 5px currentColor;/* TODO: fill here */;
+        box-shadow:     0px 0px 20px 10px currentColor;/* TODO: fill here */;
         opacity:        0.9;
     }
     .highlight {
