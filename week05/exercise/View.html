@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View</title>
+    <style>
+        body {
+
+        }
+        canvas {
+            background-color: lightgray;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<div>
+    <canvas id="canvas" width="800" height="800"></canvas>
+</div>
+
+
+<script>
+    const paint = canvas => {
+        const centerx   = canvas.width  / 2;
+        const centery   = canvas.height / 2;
+        const ctx       = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.moveTo(centerx, centery);
+        ctx.arc(centerx, centery, 300, 0, 5.4);
+        ctx.fillStyle = "blue";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(centerx, centery);
+        ctx.arc(centerx, centery, 350, 0, 3.1);
+        ctx.strokeStyle = "red";
+        ctx.lineCap = "square";
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+    };
+    paint(document.getElementById("canvas"));
+</script>
+
+
+</body>
+</html>

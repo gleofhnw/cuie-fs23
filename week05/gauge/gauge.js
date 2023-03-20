@@ -1,6 +1,6 @@
 // Using only function scope. No "class", "new", or "this".
 
-function progressPie(canvas, progressFraction, showThumb) {
+const progressPie = (canvas, progressFraction, showThumb) => {
     const centerx   = canvas.width  / 2;
     const centery   = canvas.height / 2;
     const radius    = Math.min(centerx, centery);
@@ -63,7 +63,7 @@ function progressPie(canvas, progressFraction, showThumb) {
         if(showThumb) thumb(progressFraction);
     }
     paint();
-}
+};
 
 // from mouse or touch event on the canvas to a 0..1 value
 const valueFromEvent = (progressView, evt) => {
@@ -75,8 +75,8 @@ const valueFromEvent = (progressView, evt) => {
         relativeY  = evt.targetTouches[0].clientY - rect.top;
     }
     // normalize into cartesian coords where 0,0 is at the center of a unit circle
-    let y = 2 * (((progressView.height / 2) - relativeY) / progressView.height);
-    let x = 2 * (relativeX / progressView.width - 0.5);
+    const y   = 2 * (((progressView.height / 2) - relativeY) / progressView.height);
+    const x = 2 * (relativeX / progressView.width - 0.5);
     let angle = Math.atan2(y, x) ;                              // (x,y) angle to x axis as in polar coords
     angle = (angle < 0) ? Math.PI + (Math.PI + angle) : angle;  // x-axis counterclockwise 0..2*pi
     let val = 1 - (angle / (2*Math.PI));                        // normalize to 0..1, clockwise
