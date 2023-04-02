@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin:  0;
+            padding: 0;
+        }
+        body {
+            color: white;
+            margin: 4rem;
+            background-color: rebeccapurple;
+        }
+        svg {
+            display: block;
+            filter: drop-shadow(0px 0px 1em cyan);
+        }
+        #wave {
+            stroke-width:   3px;
+            stroke-opacity: 1;
+            stroke-linecap: round;
+            stroke:         cyan;
+            stroke-dasharray: 0 104 ;
+        }
+        #wave.full {
+            animation: fancy 2s;
+            /*animation-fill-mode: forwards;*/
+            /*animation-direction: alternate;*/
+            /*animation-iteration-count: infinite;*/
+
+        }
+        @keyframes fancy {
+            0% {
+                stroke-dasharray: 0 104 ;
+                stroke:         white;
+                stroke-opacity: .4;
+            }
+            100% {
+                stroke-dasharray: 100 104 ;
+                stroke:         cyan;
+                stroke-opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<main>
+    <div id="sea" >
+        <svg viewBox="-2 0 124 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="wave" d="M 0 60 C 40 0,  80 120,  120 60" pathLength="100" />
+        </svg>
+    </div>
+    <div>
+        <button id="button">animate</button>
+    </div>
+</main>
+
+<script>
+    const wave   = document.querySelector('#wave');
+    const button = document.querySelector('#button');
+
+    button.onclick = _event => {
+        wave.classList.remove("full");
+        setTimeout( () => wave.classList.add("full"), 0);
+    }
+
+
+</script>
+
+</body>
+</html>
