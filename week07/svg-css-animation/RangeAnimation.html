@@ -27,9 +27,9 @@
         }
         #wave.full {
             animation: fancy 2s;
-            /*animation-fill-mode: forwards;*/
-            /*animation-direction: alternate;*/
-            /*animation-iteration-count: infinite;*/
+            animation-fill-mode: forwards;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
 
         }
         @keyframes fancy {
@@ -37,6 +37,10 @@
                 stroke-dasharray: 0 104 ;
                 stroke:         white;
                 stroke-opacity: .4;
+            }
+            30% {
+                stroke-dasharray: 50 104 ;
+                stroke:         red;
             }
             100% {
                 stroke-dasharray: 100 104 ;
